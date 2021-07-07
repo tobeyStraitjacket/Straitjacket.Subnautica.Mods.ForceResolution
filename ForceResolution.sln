@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForceResolution", "ForceResolution\ForceResolution.csproj", "{E7CC0B92-274E-42FA-8B6A-32C5DB84B5E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Scripts", "Build Scripts", "{730D98C6-B93E-4920-8136-8C14229AF157}"
+	ProjectSection(SolutionItems) = preProject
+		postbuild.ps1 = postbuild.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		SUBNAUTICA|Any CPU = SUBNAUTICA|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7CC0B92-274E-42FA-8B6A-32C5DB84B5E9}.SUBNAUTICA|Any CPU.ActiveCfg = SUBNAUTICA|Any CPU
+		{E7CC0B92-274E-42FA-8B6A-32C5DB84B5E9}.SUBNAUTICA|Any CPU.Build.0 = SUBNAUTICA|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B469EB98-E44F-48C5-A04A-A133A2346C8B}
+	EndGlobalSection
+EndGlobal
