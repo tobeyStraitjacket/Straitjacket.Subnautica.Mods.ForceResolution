@@ -5,5 +5,10 @@
     "Version": "1.0",
     "AssemblyName": "Straitjacket.Subnautica.Mods.ForceResolution.dll",
     "Enable": true,
-    "Game": "Both"
+    "Game": "Both",
+    "Dependencies": [ "SMLHelper" ],
+    "NexusId": {
+        "Subnautica": "791",
+        "BelowZero": "221"
+    }
 }
