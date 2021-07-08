@@ -18,32 +18,34 @@ namespace Straitjacket.Subnautica.Mods.ForceResolution
 
         public Resolution DesiredResolution { get; set; }
 
-        [Choice("Desired fullscreen mode")]
+        [Choice(label: "Desired fullscreen mode",
+                "Exclusive fullscreen", "Windowed fullscreen", "Windowed")]
         public FullscreenMode DesiredFullscreenMode { get; set; } = FullscreenMode.WindowedFullscreen;
 
-        [Choice("Resolution service mode",
+        [Choice(label: "Resolution service mode",
+                "Off", "Always on", "Main menu only",
                 Tooltip = "Runs a background service that checks for changes to the game resolution, " +
                           "and automatically enforces your preferences.")]
         [OnChange(nameof(OnServiceModeChanged))]
-        public ServiceMode ResolutionServiceMode { get; set; } = ServiceMode.Startup;
+        public ServiceMode ResolutionServiceMode { get; set; } = ServiceMode.MainMenuOnly;
 
         public void OnServiceModeChanged()
         {
             switch (ResolutionServiceMode)
             {
-                case ServiceMode.Enabled:
+                case ServiceMode.AlwaysOn:
                     ResolutionService.Instance.gameObject.EnsureComponent<SceneCleanerPreserve>();
                     Object.DontDestroyOnLoad(ResolutionService.Instance.gameObject);
                     break;
-                case ServiceMode.Startup when Object.FindObjectOfType<Player>() is null:
+                case ServiceMode.MainMenuOnly when Object.FindObjectOfType<Player>() is null:
                     foreach (var preserver in ResolutionService.Instance.GetComponents<SceneCleanerPreserve>().ToList())
                     {
                         Object.Destroy(preserver);
                     }
                     SceneManager.MoveGameObjectToScene(ResolutionService.Instance.gameObject, SceneManager.GetActiveScene());
                     break;
-                case ServiceMode.Startup:
-                case ServiceMode.Disabled:
+                case ServiceMode.MainMenuOnly:
+                case ServiceMode.Off:
                     Object.Destroy(ResolutionService.Instance.gameObject);
                     break;
             }
@@ -80,7 +82,7 @@ namespace Straitjacket.Subnautica.Mods.ForceResolution
 
         public enum ServiceMode
         {
-            Disabled, Enabled, Startup
+            Off, AlwaysOn, MainMenuOnly
         }
     }
 }
