@@ -2,7 +2,7 @@
     "Id": "ForceResolution",
     "DisplayName": "Force Resolution",
     "Author": "Tobey Blaber",
-    "Version": "1.0",
+    "Version": "1.0.1",
     "AssemblyName": "Straitjacket.Subnautica.Mods.ForceResolution.dll",
     "Enable": true,
     "Game": "Both",

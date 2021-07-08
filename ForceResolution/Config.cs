@@ -54,14 +54,22 @@ namespace Straitjacket.Subnautica.Mods.ForceResolution
                           "by the resolution service or applied manually.")]
         public void SaveSettings()
         {
-            Main.Logger.LogDebug($"Saving resolution {Screen.currentResolution}, {DesiredFullscreenMode}");
+            string message = $"Saving resolution: {Screen.currentResolution}, {DesiredFullscreenMode}";
+            Main.Logger.LogInfo(message);
+            ErrorMessage.AddMessage(message);
             DesiredResolution = Screen.currentResolution;
             Save();
         }
 
         [Button("Apply saved settings",
-                Tooltip = "Sets your resolution and fullscreen mode to the saved settings.")]
-        public void ApplySavedSettings() => ResolutionService.Instance.SetResolution(DesiredResolution, DesiredFullscreenMode);
+                Tooltip = "Instantly sets your resolution and fullscreen mode to the saved settings. If you're running the service, you don't need to do this.")]
+        public void ApplySavedSettings()
+        {
+            ResolutionService.Instance.SetResolution(DesiredResolution, DesiredFullscreenMode);
+            string message = $"Set resolution: {Main.Config.DesiredResolution}, {Main.Config.DesiredFullscreenMode}";
+            Main.Logger.LogInfo(message);
+            ErrorMessage.AddMessage(message);
+        }
 
         public enum FullscreenMode
         {
