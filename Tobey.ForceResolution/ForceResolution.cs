@@ -77,19 +77,19 @@ public class ForceResolution : BaseUnityPlugin
     {
         switch (General.ResolutionServiceMode.Value)
         {
-            case ServiceMode.Enabled:
+            case ServiceMode.AlwaysOn:
                 ResolutionService.Instance.gameObject.EnsureComponent<SceneCleanerPreserve>();
                 DontDestroyOnLoad(ResolutionService.Instance.gameObject);
                 break;
-            case ServiceMode.Startup when FindObjectOfType<Player>() == null:
+            case ServiceMode.MainMenuOnly when FindObjectOfType<Player>() == null:
                 foreach (var preserver in ResolutionService.Instance.GetComponents<SceneCleanerPreserve>().ToList())
                 {
                     Destroy(preserver);
                 }
                 SceneManager.MoveGameObjectToScene(ResolutionService.Instance.gameObject, SceneManager.GetActiveScene());
                 break;
-            case ServiceMode.Startup:
-            case ServiceMode.Disabled:
+            case ServiceMode.MainMenuOnly:
+            case ServiceMode.Off:
                 Destroy(ResolutionService.Instance.gameObject);
                 break;
         }

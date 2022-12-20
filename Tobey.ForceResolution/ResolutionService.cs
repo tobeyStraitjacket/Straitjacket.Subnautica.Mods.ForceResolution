@@ -25,7 +25,7 @@ public class ResolutionService : MonoBehaviour
                 ForceResolution.Instance.SetResolution(General.DesiredResolution.Value, General.DesiredFullscreenMode.Value);
             }
 
-            if (General.ResolutionServiceMode.Value == ServiceMode.Startup && FindObjectOfType<Player>() != null)
+            if (General.ResolutionServiceMode.Value == ServiceMode.MainMenuOnly && FindObjectOfType<Player>() != null)
             {
                 break;
             }

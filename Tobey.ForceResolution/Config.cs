@@ -32,7 +32,7 @@ public static class Config
             Cfg.Bind(
                 section: nameof(General),
                 key: "Resolution service mode",
-                defaultValue: ServiceMode.Startup,
+                defaultValue: ServiceMode.MainMenuOnly,
                 description: "Runs a background service that checks for changes to the game resolution, " +
                              "and attempts to enforce your preferences."
             );
@@ -47,6 +47,6 @@ public static class Config
 
     public enum ServiceMode
     {
-        Disabled, Enabled, Startup
+        Off, AlwaysOn, MainMenuOnly
     }
 }
